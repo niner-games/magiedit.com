@@ -23,6 +23,7 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => 'FjxOQ8EoaUJD8VQteQ7rDZWKKqaSGZI_',
+            'baseUrl' => str_replace('/web', '', (new \yii\web\Request)->getBaseUrl()),
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
@@ -48,8 +49,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
     ],
     'params' => $params,
