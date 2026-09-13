@@ -10,11 +10,9 @@ assignees: mrfatguy
 
 Repeated title or possibly a summary of the description.
 
-Check-list:
-
-- [ ] Item 1  
-- [ ] Item 2
-- [ ] Item 3
+- [ ] Item
+- [ ] Item
+- [ ] Item
 
 If possible and required, add a screenshot (<kbd>PrtSc</kbd>) or a screencast (_LICEcap_, _ScreenToGif_).
 
