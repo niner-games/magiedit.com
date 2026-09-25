@@ -1,49 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!--suppress ALL -->
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://www.ninergames.com/" target="_blank">
+        <img src="LOGO.png" alt="Logo of Niner Games" width="300" height="238">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <img src="TITLE.svg" width="600" height="63" alt="MagiEdit">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.
+<hr>
 
-## Learning Laravel
+# Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+TBC
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Git Hook
 
-## Laravel Sponsors
+In the root directory, navigate to the hidden `.git/hooks/` folder. Create a file there called `pre-commit` and paste the following contents into it:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+#!/bin/sh
+echo "Running npm run build before commit..."
+npm run build
+git add public/build
+```
 
-### Premium Partners
+Now, before commiting (from any source; PhpStorm, Git for Windows, etc.), git will make sure that your current commit **will contain all actual artifacts from Vite** (by running `npm run build`) prior to commiting.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Releases
 
-## Contributing
+All the details are given in [Git Basics - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) and [Managing releases in a repository](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+In short:
 
-## Code of Conduct
+1. Make a tag:
+    * For exiting commit:
+        * List all commits: `git log --pretty=oneline`
+        * Pick the one you wish to tag (first seven letters of the has are enough), i.e.: `32c274c`
+        * Add a tag: `git tag -a 0.1 32c274c -m "First version before general refactor"`
+    * For latest commit: `git tag -a 1.4 -m "My version 1.4"`
+    * Please, **do not** use `v1.0` scheme;
+        * A version is a version, no need to prepend number with `v`
+        * Even if [GitHub claims](https://github.com/akademia-slaska/template-repository/releases/new) that this is a common practice to do so
+    * Use [Semantic Versioning 2.0.0](https://semver.org/) (three numbers) whenever possible
+2. Push tag(s) to GitHub: `git push --tags`
+3. Create [a new release](https://github.com/akademia-slaska/template-repository/releases/new): pick a tag, add title and a description, add some binaries, set options
+4. Publish a release or save it as a draft.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+GitHub **always adds a source code** to release. We **must always treat** all our releases **purely as private**.
 
-## Security Vulnerabilities
+The `git push --tags` pushes tags **only**. Any not-yet-pushed commits must be pushed separately using  `git push`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Tools
 
-## License
+1. To **generate a password** or a key, [RandomKeygen](https://randomkeygen.com/) generator simply rocks!
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. We can setup a quick 1-to-1 **screen sharing session** using jitbit.com free [browser screen sharing tool](https://www.jitbit.com/screensharing/).
+
+3. When a quick **on-line Markdown editor** is needed, you can give [StackEdit](https://stackedit.io/app#) a try.
+
+4. For **converting text files** from one markup format to another, [pandoc](https://pandoc.org/index.html) is your swiss-army knife.
+
+# Diagrams
+
+If diagrams are needed, we can use [MermaidJS tool for JavaScript](https://mermaid.js.org/) across entire GitHub (in issues, wikis, discussions and in regular text files. GitHub support for MermaidJS causes that you can just write something like this:
+
+	```
+	flowchart TD
+	    111 --> |CASH > 10| 25
+	    25 --> |SSS = 1| 151
+	    25 --> |SSS = 0| 222
+	    222 --> |RESULT = Won| 174
+	    222 --> |RESULT = Lost| 238    
+	    238 --> 151
+	    174 --> 151
+	    click 174 href "https://mermaid.live/edit
+	```
+
+And you'll end up with something like this:
+
+```mermaid
+flowchart TD;111-->|CASH>10|25;25-->|SSS=1|151;25-->|SSS=0|222;222-->|RESULT=Won|174;222-->|RESULT=Lost|238;238-->151;174-->151; click 174 href "https://mermaid.live/edit"
+```
+
+You can use:
+
+- [Mermaid  Live Editor](https://mermaid.live/) to view rendered MermaidJS code as you type it or
+- [mermaid.ink Generator](https://mermaid.ink/) to convert (render) MermaidJS code it into an image or data-uri string.
+
+An alternative to the above *Flow Chart Diagram* is [State Machine Diagram](https://mermaid.live/edit#pako:eNpdjz0LgzAQhv-K3Fh06ejQpV2d3No4HObUQD4kXoQi_vemCdJipofn3gv3btA7SVDDwsj0UDh6NNV6FbaI73Xpiqq6FS0rrbNKmGQcnlXjVmXHbDOf1__s3eMyZZvw-BRKMOQNKhnP2r4BATyRIQF1REkDBs0ChN1jFAO79m17qNkHKiHM8lfkkCQVO9_kpqlwCTPap3MxMqBeaP8ArztTOA). It renders quite similar diagrams.
+
+MermaidJS supports other diagram types. Including: [Class Diagram](https://mermaid.live/edit#pako:eNptkc9OwzAMxl8l8glE-wIVF8SYxGGn3aZKyE28LmrijPzRBGPvTlrWMDZySfyzP-uLfQTpFEED0mAIC429R9uyyOeJtUUjHr_qWiySHG7pUofdLd1Q5_EPbsSD5iiwp2u8jl5zL3piRf4yOUrCCm1-3t1fJSxGmuFke7J3_AGiNO0Ih2dnnC-JcNB2FubwPaEc5vh02W_8WOlXj96D_qRXXhLFgiXyC8Z_9dMIfg11zhmhw9tBG1WgT1y0UIElb1GrvIlJ10LckaUWmvxUtMVkYgstj6WYolt_sIQm-kQVpL3KEznvboakdHR-dV7ueFWwR944l0u2aAKdvgFIMZyC), [Sequence Diagram](https://mermaid.live/edit#pako:eNptkLFqAzEMhl9F0VrfC9yQUujQFDp1K16E_V_OYFuJY1NCyLvXd9ds0fQjfZ9AurFTDx75gnNDdngPciySbKZebzE4DPv9y6fOeaQPxKi0ZEOz_pIU0FXb61N4w5zkBaEZUijhH11mQ0eH1emLw2YbOqzGSndt9xw_0AREOhZI3bHhhJIk-H7FbREs1xkJlscePSZpsVq2-d5RaVW_r9nxWEuD4XbyUh9HP5rwoWr52h6z_sfwSfKPakcmiRfc_wC26mTi) and [Entity Relation Diagram](https://mermaid.live/edit#pako:eNp10VFrgzAQB_CvEu5Z-wF8KxqGMOeIttCRl8ycbUCNpLEw1O--WA1bO5a3HL_7J9yNUGmJEAGaRImzES3viDvxoSjzjDIyT7vdNJKEvqZHyk7hPkkYLQoSkYu4PtlpCkM9kpwl7hKRvhEV_mPSt2OextQpDo0Snw2SWhsOq_7z2lOywQrVzWf7rAVNP6jSNzQbWWu_QZiWNHNKdVUzSB_1zvLkEJdhvC_pS85OvmWr31M7K1T36B_-55M5aCPRoHRvcIAAWjStUNINe1y6OdgLtshhoRJrMTR2GcDsqBisLr66CiJrBgxg6KWwuG3IF1Eqq0227u--xgB60X1o7UgtmivO35Pxk64).
+
+# License
+
+MagiEdit is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
