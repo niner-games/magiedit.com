@@ -59,6 +59,19 @@ APP_ENV=local
 APP_DEBUG=true
 ```
 
+Configure mail transport:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=web5.aftermarket.hosting
+MAIL_PORT=587
+MAIL_USERNAME=hello@magiedit.com
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="hello@magiedit.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 ## Git Hook
 
 _If you do not intend to contribute to the project, you can skip this step._
