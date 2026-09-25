@@ -27,31 +27,26 @@ npm run build
 git add public/build
 ```
 
-Now, before commiting (from any source; PhpStorm, Git for Windows, etc.), git will make sure that your current commit **will contain all actual artifacts from Vite** (by running `npm run build`) prior to commiting.
+Git, before committing (from any source; PhpStorm, Git for Windows, etc.), will make sure that your current commit **contains all actual artifacts from Vite**, by running `npm run build` prior to committing.
 
 # Releases
 
-All the details are given in [Git Basics - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) and [Managing releases in a repository](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
-
-In short:
-
 1. Make a tag:
+    * For latest commit: `git tag -a 1.4 -m "New release"`
     * For exiting commit:
         * List all commits: `git log --pretty=oneline`
-        * Pick the one you wish to tag (first seven letters of the has are enough), i.e.: `32c274c`
-        * Add a tag: `git tag -a 0.1 32c274c -m "First version before general refactor"`
-    * For latest commit: `git tag -a 1.4 -m "My version 1.4"`
-    * Please, **do not** use `v1.0` scheme;
-        * A version is a version, no need to prepend number with `v`
-        * Even if [GitHub claims](https://github.com/akademia-slaska/template-repository/releases/new) that this is a common practice to do so
+        * Pick the one you wish to tag (first seven letters are enough)
+        * Add a tag: `git tag -a 0.1 32c274c -m "First version"`
+    * Please, **do not** use `v1.0` scheme; no need to prepend with `v`
     * Use [Semantic Versioning 2.0.0](https://semver.org/) (three numbers) whenever possible
-2. Push tag(s) to GitHub: `git push --tags`
-3. Create [a new release](https://github.com/akademia-slaska/template-repository/releases/new): pick a tag, add title and a description, add some binaries, set options
+2. Push tag(s) to GitHub: `git push --tags` (pushes tags **only**!)
+3. Create [a new release](https://github.com/akademia-slaska/template-repository/releases/new):
+    * pick a tag
+    * add title and a description
+    * add some binaries, set options, etc.
 4. Publish a release or save it as a draft.
 
-GitHub **always adds a source code** to release. We **must always treat** all our releases **purely as private**.
-
-The `git push --tags` pushes tags **only**. Any not-yet-pushed commits must be pushed separately using  `git push`.
+Remember that GitHub **always adds a source code** to release.
 
 # Tools
 
