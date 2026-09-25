@@ -14,9 +14,54 @@
 
 # Installation
 
-TBC
+## Base Installation
+
+Clone repository:
+
+```bash
+git clone git@github.com:niner-games/magiedit.com.git magiedit
+cd magiedit
+```
+
+Install PHP dependencies
+
+```bash
+composer install
+```
+
+_Use `--no-dev` flag if you do not intend to contribute to the project._
+
+## Environment Configuration
+
+* Create a MySQL database. Do not create any tables.
+
+* Create the `.env` file in the project root and update the database credentials:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.0
+DB_PORT=3306
+DB_DATABASE=magiedit
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Run commands:
+
+- `php artisan migrate`
+- `php artisan key:generate`
+
+Change other settings in `.env` as needed:
+
+```env
+APP_URL=http://magiedit.test
+APP_ENV=local
+APP_DEBUG=true
+```
 
 ## Git Hook
+
+_If you do not intend to contribute to the project, you can skip this step._
 
 In the root directory, navigate to the hidden `.git/hooks/` folder. Create a file there called `pre-commit` and paste the following contents into it:
 
@@ -27,7 +72,7 @@ npm run build
 git add public/build
 ```
 
-Git, before committing (from any source; PhpStorm, Git for Windows, etc.), will make sure that your current commit **contains all actual artifacts from Vite**, by running `npm run build` prior to committing.
+_Git, before committing (from any source; PhpStorm, Git for Windows, etc.), will make sure that your current commit **contains all actual artifacts from Vite**, by running `npm run build` prior to committing._
 
 # Releases
 

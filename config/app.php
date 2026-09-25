@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', "MagiEdit — A high-performance web editor for building Visual Novel games in Ren'Py"),
 
     /*
     |--------------------------------------------------------------------------
